@@ -65,11 +65,12 @@ if __name__ == "__main__":
     if len(sys.argv) < 3:
         print(usage)
         sys.exit(1)
-
-    if "http://" in sys.argv[1]:
-        url = sys.argv[1].replace("http://", "")
-    host = sys.argv[1]
-    port = int(url.split(":")[1].split("/")[0])
+        
+    
+    if "http://" in sys.argv[2]:
+        url = sys.argv[2].replace("http://", "")
+    host = sys.argv[2]
+    port = int(url.split(":")[2].split("/")[1])
     path = url.find("/")
     if path == -1:
         path = "/"
