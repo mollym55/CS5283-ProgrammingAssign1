@@ -4,7 +4,6 @@ import re
 import os
 import sys
 
-socket.setdefaulttimeout = 0.50
 os.environ['no_proxy'] = '127.0.0.1,localhost'
 linkRegex = re.compile('<a\s*href=[\'|"](.*?)[\'"].*?>')
 CRLF = "\r\n\r\n"
