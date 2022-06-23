@@ -47,7 +47,7 @@ def getPath(url):
         exit()  # get out!
 
 
-def GET(host, port):
+def GET(url, port):
     s = configClientTCP(url)
     path = urlparse(url).path
     msg = "GET %s HTTP/1.0%s" % (path, CRLF)
