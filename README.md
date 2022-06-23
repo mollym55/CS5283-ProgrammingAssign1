@@ -1,7 +1,7 @@
 # CS5283-ProgrammingAssign1
 
-#Simple Web Server and Client
-##Description
+# Simple Web Server and Client
+## Description
 In this assignment, you will write and execute 2 programs, a web server and a web client.
 You do not need to support cookies or other forms of state, simply viewing static web pages on the web server. For the specific requirements on the HTTP protocol, refer to RFC 7230 (https://tools.ietf.org/html/rfc7230), or the older RFC 2616 (https://tools.ietf.org/html/rfc2616).
 
@@ -9,7 +9,7 @@ Please implement HTTP/1.1 protocol (not HTTP/1.0). Host header field is required
 
 We prefer Python as it will be easiest for you, but Java or another language is also acceptable.
 
-##1. Client
+## 1. Client
 Implement a basic socket-based web client by connecting and sending HTTP protocol messages to a web server. You can refer to the HTTP client demoed in week 2 for most of this, but need to add some features, handling status codes, etc. There does not need to be any detailed GUI or user interface. The basic call for your program will be:
 
 python web_client.py host:port/path [METHOD]
@@ -34,7 +34,7 @@ Vanderbilt CS 5283 test test2 test3 test4
 
   The client program is expected to work with other public websites, although of course it may be ugly due to not decoding the HTML, etc.
   
-##2. Server
+## 2. Server
 Implement a basic socket-based web server by listening on a specified port, such as port 80. The basic call for the web server will be:
 
 python web_server.py PORT DIRECTORY
