@@ -63,7 +63,7 @@ def GET(host, port):
     print_result(dataAppend)
 
 def HEAD(url, port):
-    s = Utility.configClientTCP(url)
+    s = configClientTCP(url)
     path = urlparse(url).path
     msg = "HEAD %s HTTP/1.0%s" % (path, CRLF)
     s.send(msg.encode())
