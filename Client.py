@@ -12,11 +12,9 @@ CRLF = "\r\n\r\n"
 default = 'GET'  
 
 
-def GET(host, port, path):
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.settimeout(0.50)
-    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    s.connect((host, port))
+def GET(host, port):
+    s = Utility.configClientTCP(url)
+    path = urlparse(url).path
     msg = "GET %s HTTP/1.0%s" % (path, CRLF)
     s.send(msg.encode())
     dataAppend = ''
@@ -29,11 +27,9 @@ def GET(host, port, path):
     s.close()
     print_result(dataAppend)
 
-def HEAD(host, port, path):
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.settimeout(0.50)
-    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    s.connect((host, port))
+def HEAD(url, port):
+    s = Utility.configClientTCP(url)
+    path = urlparse(url).path
     msg = "HEAD %s HTTP/1.0%s" % (path, CRLF)
     s.send(msg.encode())
     dataAppend = ''
@@ -59,27 +55,30 @@ def print_result(data):
     print("\n", data)
 
 
-if __name__ == "__main__":
-    """python Client.py host:port/path [METHOD]"""
-    usage = "python Client.py host:port/path [METHOD]"
-    if len(sys.argv) < 3:
-        print(usage)
-        sys.exit(1)
-        
-    
-    if "http://" in sys.argv[1]:
-        url = sys.argv[2].replace("http://", "")
-    host = sys.argv[2]
-    port = int(url.split(":")[2].split("/")[1])
-    path = url.find("/")
-    if path == -1:
-        path = "/"
+def main():
+    url = ''
+    method = ''
+
+    if len(sys.argv) == 2:
+        # grab command-line value
+        url = sys.argv[1]
+
+        # assign default
+        method = default
+        GET(url, method)
+
+    elif len(sys.argv) == 3:
+        # grab command-line values
+        url = sys.argv[1]
+        method = sys.argv[2].upper()
+        HEAD(url,method)
+
     else:
-        path = url[path:]
-    #print("host: %s, port: %d, path: %s" % (host, port, path))
-    if sys.argv[2] == "GET":
-        GET(host, port, path)
-    elif sys.argv[2] == "HEAD":
-        HEAD(host, port, path)
+        # too few or many arguments -- display error and exit
+        Err.displayCountError()
+        exit()
+
+    # actually do the things
+    executeAppropriateMethod(url, method)
     
     
