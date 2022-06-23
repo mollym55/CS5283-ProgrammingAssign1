@@ -20,7 +20,7 @@ class server():
             print('Connection from', address)
             request = con.recv(1024)
             request = request.decode()
-            print('Request:' request)
+            print('Request:', request)
             self.handle(request, con)
             con.close()
 
