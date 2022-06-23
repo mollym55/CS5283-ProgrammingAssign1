@@ -58,17 +58,23 @@ def print_result(data):
     print("\n", data)
 
 
-if __name__ == "__main__":
-    """python Client.py host:port/path [METHOD]"""
-    usage = "python Client.py host:port/path [METHOD]"
-    if len(sys.argv) < 3:
-        print(usage)
-        sys.exit(1)
+def main():
+    url = ''
+    method = ''
 
-    
-    #print("host: %s, port: %d, path: %s" % (host, port, path))
-    if sys.argv[2] == "GET":
-        GET(host, port, path)
-    elif sys.argv[2] == "HEAD":
-        HEAD(host, port, path)
-    
+    if len(sys.argv) == 2:
+        # grab command-line value
+        url = sys.argv[1]
+
+        # assign default
+        method = default
+
+    elif len(sys.argv) == 3:
+        # grab command-line values
+        url = sys.argv[1]
+        method = sys.argv[2].upper()
+        
+    else:
+        # too few or many arguments -- display error and exit
+        Err.displayCountError()
+        exit()
