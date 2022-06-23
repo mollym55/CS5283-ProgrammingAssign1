@@ -79,9 +79,9 @@ class server():
 
 
 if __name__ == "__main__":
-    """python web_server.py PORT DIRECTORY"""
+    """python Server.py PORT DIRECTORY"""
     if len(sys.argv) != 3:
-        print("Usage: python web_server.py PORT DIRECTORY")
+        print("Usage: python Server.py PORT DIRECTORY")
         sys.exit(1)
     else:
         port = int(sys.argv[1])
