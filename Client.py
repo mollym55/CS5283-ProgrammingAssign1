@@ -54,7 +54,6 @@ def GET(url, port):
     s.send(msg.encode())
     data = (s.recv(10000000))
     if not data:
-        Err.displayServerError()
         exit()
 
     # shutdown and close tcp connection and socket
@@ -69,7 +68,6 @@ def HEAD(url, port):
     s.send(msg.encode())
     data = (s.recv(10000000))
     if not data:
-        Err.displayServerError()
         exit()
 
     # shutdown and close tcp connection and socket
