@@ -60,7 +60,7 @@ def GET(url, port):
             dataAppend = dataAppend, repr(data)
     s.shutdown(1)
     s.close()
-    print_result(dataAppend)
+    print(data.decode('UTF-8'))
 
 def HEAD(url, port):
     s = configClientTCP(url)
