@@ -38,7 +38,7 @@ class server():
         headers = "HTTP/1.1 " + str(status_code) + " OK\r\n"
         headers += "Date: " + datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT') + "\r\n"
         headers += "Server: Molly's Server\r\n"
-        headers += "Content-Length: " + content_len +"\r\n"
+        headers += "Content-Length: " + str(content_len) +"\r\n"
         headers += "Connection: close\r\n"
         headers += "Content-Type: text/html; charset=UTF-8\r\n"
         return headers
@@ -68,7 +68,7 @@ class server():
             con.send((self.default_headers(status_code=404) + "Error 404: Not Found").encode())
             
     def error(self, con):
-        error_response = self.default_headers(status_code="501")
+        error_response = self.default_headers(status_code=501)
         error_response += "<h1>Error 501: Not Implemented</h1>"
         con.send(error_response.encode())
 
