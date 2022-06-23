@@ -11,7 +11,7 @@ class server():
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         sock.bind((host, port))
         sock.listen(1)
-        print(f"Listening on: {port}")
+        print('Listening on:', port)
         self.sock = sock
 
     def serve(self):
