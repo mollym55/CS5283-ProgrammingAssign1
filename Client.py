@@ -3,6 +3,7 @@ import socket
 import re
 import os
 import sys
+from urllib.parse import urlparse
 
 os.environ['no_proxy'] = '127.0.0.1,localhost'
 linkRegex = re.compile('<a\s*href=[\'|"](.*?)[\'"].*?>')
