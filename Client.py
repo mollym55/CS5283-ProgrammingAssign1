@@ -1,6 +1,5 @@
 # Import socket module
 import socket
-from urllib.parse import urlparse
 import re
 import os
 import sys
