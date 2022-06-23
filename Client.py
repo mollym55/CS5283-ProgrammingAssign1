@@ -28,7 +28,7 @@ def config(url):
         path = getPath(url.netloc)
 
         HOST = path[0]  
-        PORT = int(path[1]) if len(path) == 2 else 80  # grab port from path else default to 80
+        PORT = int(path[1]) if len(path) == 2 else 80  
 
     s.connect((HOST, PORT))
     return s
