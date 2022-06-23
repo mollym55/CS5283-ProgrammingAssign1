@@ -68,13 +68,8 @@ class server():
             con.send((self.default_headers(status_code=404) + "Error 404: Not Found").encode())
             
     def error(self, con):
-        error_response = self.default_headers(status_code=501)
-        error_response += "<h1>Error 501: Not Implemented</h1>"
-        con.send(error_response.encode())
-
-
-
-
+        con.send((self.default_headers(status_code=501) + "Error 501: Not Implemented").encode())
+        
 
 if __name__ == "__main__":
     """python Server.py PORT DIRECTORY"""
