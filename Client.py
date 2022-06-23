@@ -75,19 +75,7 @@ def HEAD(url, port):
             dataAppend = dataAppend, repr(data)
     s.shutdown(1)
     s.close()
-    print_result(dataAppend)
-
-def print_result(data):
-    if len(data[1]) > 0:
-        data = data[1]
-    else:
-        data = data[0]
-    data = data.replace("\\n", "\n")
-    data = data.replace("\\r", "\r")
-    data = data.replace("\\t", "\t")
-    data = data.replace("b'", "")
-    data = data.replace("'", "")
-    print("\n", data)
+    print(data.decode('UTF-8'))
 
 
 def main():
