@@ -35,13 +35,14 @@ class server():
             self.error(con)
 
     def default_headers(self, status_code=200, content_len=None):
-        headers = f"HTTP/1.1 {status_code} OK\r\n"
-        headers += f"Date: {datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')}\r\n"
-        headers += "Server: Molly's Server\r\n"
-        headers += f"Content-Length: {content_len}\r\n"
-        headers += "Connection: close\r\n"
-        headers += "Content-Type: text/html; charset=UTF-8\r\n"
-        headers += "\r\n"
+        headers = []
+        headers.append('HTTP/1.1' + status_code + 'OK\r\n')
+        headers.append('Date: ' + datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT') + '\r\n')
+        headers.append("Server: Molly's Server\r\n")
+        headers.append('Content-Length: ' + content_len +'\r\n')
+        headers.append('Connection: close\r\n')
+        headers.append('Content-Type: text/html; charset=UTF-8\r\n')
+        headers.append('\r\n')
         return headers
 
     def head(self, path, con):
