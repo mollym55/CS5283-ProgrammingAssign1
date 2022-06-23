@@ -54,8 +54,8 @@ class server():
                 size = len(data)
                 con.send(self.default_headers(content_len=size).encode())
         except:
-            print(self.default_headers(status_code="404"))
-            print("<h1>Error 404: Not Found</h1>")
+            con.send(self.default_headers(status_code="404").encode())
+            con.send("<h1>Error 404: Not Found</h1>").encode()
 
 
     def get(self, path, con):
@@ -68,9 +68,9 @@ class server():
                 con.send(self.default_headers(content_len=size).encode())
                 con.send(data)
         except:
-            print(self.default_headers(status_code="404"))
-            print("<h1>Error 404: Not Found</h1>")
-
+            con.send(self.default_headers(status_code="404").encode())
+            con.send("<h1>Error 404: Not Found</h1>").encode()
+            
     def error(self, con):
         error_response = self.default_headers(status_code="501")
         error_response += "<h1>Error 501: Not Implemented</h1>"
