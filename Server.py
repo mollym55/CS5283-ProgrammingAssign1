@@ -54,7 +54,7 @@ class server():
                 size = len(data)
                 con.send(self.default_headers(content_len=size).encode())
         except:
-            self.default_headers(status_code="404") 
+            print(self.default_headers(status_code="404") )
             print("<h1>Error 404: Not Found</h1>")
 
 
@@ -68,7 +68,7 @@ class server():
                 con.send(self.default_headers(content_len=size).encode())
                 con.send(data)
         except:
-            self.default_headers(status_code="404") 
+            Print(self.default_headers(status_code="404"))
             print("<h1>Error 404: Not Found</h1>")
 
     def error(self, con):
