@@ -72,13 +72,5 @@ def main():
         url = sys.argv[1]
         method = sys.argv[2].upper()
         HEAD(url,method)
-
-    else:
-        # too few or many arguments -- display error and exit
-        Err.displayCountError()
-        exit()
-
-    # actually do the things
-    executeAppropriateMethod(url, method)
-    
+main()
     
