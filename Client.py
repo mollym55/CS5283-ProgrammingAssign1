@@ -78,3 +78,5 @@ def main():
         # too few or many arguments -- display error and exit
         Err.displayCountError()
         exit()
+        
+main()
