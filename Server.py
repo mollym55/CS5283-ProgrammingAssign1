@@ -35,15 +35,12 @@ class server():
             self.error(con)
 
     def default_headers(self, status_code=200, content_len=None):
-        headers = "HTTP/1.1" + str(status_code) + "OK\r\n"
-        #header +=
-        #headers.append("HTTP/1.1" + status_code + "OK\r\n")
-        #headers.append("Date: " + datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT') + "\r\n")
-        #headers.append("Server: Molly's Server\r\n")
-        #headers.append("Content-Length: " + content_len +"\r\n")
-        #headers.append("Connection: close\r\n")
-        #headers.append("Content-Type: text/html; charset=UTF-8\r\n")
-        #headers.append("\r\n")
+        headers = "HTTP/1.1 " + str(status_code) + " OK\r\n"
+        headers += "Date: " + datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT') + "\r\n"
+        headers += "Server: Molly's Server\r\n"'
+        headers += "Content-Length: " + content_len +"\r\n"
+        headers += "Connection: close\r\n"
+        headers += "Content-Type: text/html; charset=UTF-8\r\n"
         return headers
 
     def head(self, path, con):
@@ -55,7 +52,7 @@ class server():
                 size = len(data)
                 con.send(self.default_headers(content_len=size).encode())
         except:
-            con.send((self.default_headers(status_code=404) + "<h1>Error 404: Not Found</h1>").encode())
+            con.send((self.default_headers(status_code=404) + "Error 404: Not Found").encode())
 
 
     def get(self, path, con):
@@ -68,7 +65,7 @@ class server():
                 con.send(self.default_headers(content_len=size).encode())
                 con.send(data)
         except:
-            con.send((self.default_headers(status_code=404) + "<h1>Error 404: Not Found</h1>").encode())
+            con.send((self.default_headers(status_code=404) + "Error 404: Not Found").encode())
             
     def error(self, con):
         error_response = self.default_headers(status_code="501")
