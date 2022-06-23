@@ -58,23 +58,14 @@ def print_result(data):
     print("\n", data)
 
 
-
 if __name__ == "__main__":
-    """python web_client.py host:port/path [METHOD]"""
-    usage = "python web_client.py host:port/path [METHOD]"
+    """python Client.py host:port/path [METHOD]"""
+    usage = "python Client.py host:port/path [METHOD]"
     if len(sys.argv) < 3:
         print(usage)
         sys.exit(1)
 
-    if "http://" in sys.argv[1]:
-        url = sys.argv[1].replace("http://", "")
-    host = url.split(":")[0]
-    port = int(url.split(":")[1].split("/")[0])
-    path = url.find("/")
-    if path == -1:
-        path = "/"
-    else:
-        path = url[path:]
+    
     #print("host: %s, port: %d, path: %s" % (host, port, path))
     if sys.argv[2] == "GET":
         GET(host, port, path)
