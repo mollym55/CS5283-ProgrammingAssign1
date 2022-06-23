@@ -17,10 +17,10 @@ class server():
     def serve(self):
         while True:
             con, address = self.sock.accept()
-            print(f"Connection from {address}")
+            print('Connection from', address)
             request = con.recv(1024)
             request = request.decode()
-            print(f"Request: {request}")
+            print('Request:' request)
             self.handle(request, con)
             con.close()
 
