@@ -37,7 +37,7 @@ class server():
     def default_headers(self, status_code=200, content_len=None):
         headers = "HTTP/1.1 " + str(status_code) + " OK\r\n"
         headers += "Date: " + datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT') + "\r\n"
-        headers += "Server: Molly's Server\r\n"'
+        headers += "Server: Molly's Server\r\n"
         headers += "Content-Length: " + content_len +"\r\n"
         headers += "Connection: close\r\n"
         headers += "Content-Type: text/html; charset=UTF-8\r\n"
