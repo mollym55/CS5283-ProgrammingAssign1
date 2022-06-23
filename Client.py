@@ -67,7 +67,7 @@ if __name__ == "__main__":
 
     if "http://" in sys.argv[1]:
         url = sys.argv[1].replace("http://", "")
-    host = url.split(":")[0]
+    host = url.split(":")[1]
     port = int(url.split(":")[1].split("/")[0])
     path = url.find("/")
     if path == -1:
