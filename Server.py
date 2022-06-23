@@ -54,7 +54,7 @@ class server():
                 size = len(data)
                 con.send(self.default_headers(content_len=size).encode())
         except:
-            con.send(self.default_headers(status_code="404").encode())
+            con.send(self.default_headers(status_code="404"))
             con.send("<h1>Error 404: Not Found</h1>").encode()
 
 
