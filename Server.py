@@ -34,7 +34,7 @@ class server():
         else:
             self.error(con)
 
-    def default_headers(self, status_code="200", content_len="None"):
+    def default_headers(self, status_code=200, content_len=None):
         headers = "HTTP/1.1" + status_code + "OK\r\n"
         #header +=
         #headers.append("HTTP/1.1" + status_code + "OK\r\n")
