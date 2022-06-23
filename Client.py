@@ -52,12 +52,12 @@ def GET(url, port):
     path = urlparse(url).path
     msg = "GET %s HTTP/1.0%s" % (path, CRLF)
     s.send(msg.encode())
-    dataAppend = ''
-    while 1:
-        data = (s.recv(10000000))
-        if not data: break
-        else:
-            dataAppend = dataAppend, repr(data)
+    data = (s.recv(10000000))
+    if not data:
+        Err.displayServerError()
+        exit()
+
+    # shutdown and close tcp connection and socket
     s.shutdown(1)
     s.close()
     print(data.decode('UTF-8'))
@@ -67,15 +67,14 @@ def HEAD(url, port):
     path = urlparse(url).path
     msg = "HEAD %s HTTP/1.0%s" % (path, CRLF)
     s.send(msg.encode())
-    dataAppend = ''
-    while 1:
-        data = (s.recv(10000000))
-        if not data: break
-        else:
-            dataAppend = dataAppend, repr(data)
+    data = (s.recv(10000000))
+    if not data:
+        Err.displayServerError()
+        exit()
+
+    # shutdown and close tcp connection and socket
     s.shutdown(1)
     s.close()
-    print(data.decode('UTF-8'))
 
 
 def main():
